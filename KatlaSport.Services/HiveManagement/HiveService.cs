@@ -82,7 +82,7 @@ namespace KatlaSport.Services.HiveManagement
                 throw new RequestedResourceHasConflictException("code");
             }
 
-            dbHives = _context.Hives.Where(p => p.Id == hiveId).ToArray();
+            dbHives = await _context.Hives.Where(p => p.Id == hiveId).ToArrayAsync();
             if (dbHives.Length == 0)
             {
                 throw new RequestedResourceNotFoundException();
@@ -108,7 +108,7 @@ namespace KatlaSport.Services.HiveManagement
             }
 
             var dbHive = dbHives[0];
-            if (dbHive.IsDeleted == false)
+            if (dbHive.IsDeleted == true)
             {
                 throw new RequestedResourceHasConflictException();
             }
