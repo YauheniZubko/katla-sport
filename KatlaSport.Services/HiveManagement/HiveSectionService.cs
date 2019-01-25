@@ -91,6 +91,9 @@ namespace KatlaSport.Services.HiveManagement
             dbHiveSection.CreatedBy = _userContext.UserId;
             dbHiveSection.LastUpdatedBy = _userContext.UserId;
             dbHiveSection.StoreHiveId = createRequest.StoreHiveId;
+            dbHiveSection.LastUpdated = DateTime.UtcNow;
+            dbHiveSection.Created = DateTime.UtcNow;
+
             _context.Sections.Add(dbHiveSection);
 
             await _context.SaveChangesAsync();
@@ -117,7 +120,7 @@ namespace KatlaSport.Services.HiveManagement
 
             Mapper.Map(updateRequest, dbHiveSection);
             dbHiveSection.LastUpdatedBy = _userContext.UserId;
-
+            dbHiveSection.LastUpdated = DateTime.UtcNow;
             await _context.SaveChangesAsync();
 
             return Mapper.Map<HiveSection>(dbHiveSection);
