@@ -28,13 +28,13 @@ export class HiveSectionListComponent implements OnInit {
     })
   }
 
-  onDelete(hiveId: number) {
-    var hive = this.hiveSections.find(h => h.id == hiveId);
-    this.hiveSectionService.setHiveSectionStatus(hiveId, true).subscribe(c => hive.isDeleted = true);
+  onDelete(hiveSectionId: number) {
+    var hiveSection = this.hiveSections.find(s => s.id == hiveSectionId);
+    this.hiveSectionService.setHiveSectionStatus(hiveSectionId, true).subscribe(c => hiveSection.isDeleted = true);
   }
 
-  onUndelete(hiveId: number) {
-    var hive = this.hiveSections.find(h => h.id == hiveId);
-    this.hiveSectionService.setHiveSectionStatus(hiveId, false).subscribe(c => hive.isDeleted = false);
+  onUndelete(hiveSectionId: number) {
+    var hiveSection = this.hiveSections.find(s => s.id == hiveSectionId);
+    this.hiveSectionService.setHiveSectionStatus(hiveSectionId, false).subscribe(c => hiveSection.isDeleted = false);
   }
 }
